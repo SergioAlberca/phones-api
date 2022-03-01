@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "S_Alberca",
+        "MONGO_PASSWORD": "rUd0UT4iy8gDLl9k",
+        "MONGO_DB": "PhonesDataBase"
+    }
+}

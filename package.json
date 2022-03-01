@@ -1,0 +1,31 @@
+{
+  "name": "phones-api",
+  "version": "1.0.0",
+  "description": "Api test with Express, MongoDB and Docker",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergio Alberca Navarro",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-form-data": "^2.0.17",
+    "mongoose": "^6.2.3",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^17.0.21",
+    "concurrently": "^7.0.0",
+    "prettier": "2.4.1"
+  }
+}

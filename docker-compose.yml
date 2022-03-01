@@ -1,0 +1,12 @@
+version: '2.4'
+services:
+  api:
+    container_name: phones_api
+    restart: on-failure
+    build: .
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "4000:4000"
+    command: >
+      sh -c "npm start"
