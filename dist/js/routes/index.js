@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const phones_1 = require("../controllers/phones");
+const utils_1 = require("../utils/utils");
+const phonesRoutes = (0, express_1.Router)();
+phonesRoutes.get("/phones", phones_1.getPhones);
+phonesRoutes.post("/phone", (0, utils_1.setImageOnStorage)(), phones_1.addPhone);
+phonesRoutes.put("/phone/:id", (0, utils_1.setImageOnStorage)(), phones_1.updatePhone);
+phonesRoutes.delete("/phone/:id", phones_1.deletePhone);
+phonesRoutes.get("/phone/:id", phones_1.getPhoneDetail);
+exports.default = phonesRoutes;
