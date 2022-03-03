@@ -15,9 +15,8 @@ const phoneSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    img:{
-      data:Buffer,
-      contentType: String
+    img: {
+      type: String || null,
     },
     color: {
       type: String,
@@ -38,7 +37,7 @@ const phoneSchema: Schema = new Schema(
     screen: {
       type: String,
       required: true,
-    }
+    },
   },
   { timestamps: true }
 );

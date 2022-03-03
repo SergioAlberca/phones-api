@@ -1,21 +1,29 @@
 import { Response, Request } from "express";
 import { IPhone } from "../../types/phone.type";
 import Phone from "../../models/phone";
-import { getImageEncode } from "../../utils/utils";
 
 const getPhones = async (req: Request, res: Response): Promise<void> => {
   try {
-    console.log(req.body)
     const phones: IPhone[] = await Phone.find();
     res.status(200).json({ phones });
   } catch (error) {
-    throw error;
+    res.status(500).json(error);
   }
 };
 
 const addPhone = async (req: Request, res: Response): Promise<void> => {
   try {
-    const body = req.body as Pick<IPhone, "name" | "description" | "price" | "color" | "processor" | "ram" | "screen" | "manuFacturer">;
+    const body = req.body as Pick<
+      IPhone,
+      | "name"
+      | "description"
+      | "price"
+      | "color"
+      | "processor"
+      | "ram"
+      | "screen"
+      | "manuFacturer"
+    >;
     const phone: IPhone = new Phone({
       color: body.color,
       description: body.description,
@@ -25,14 +33,14 @@ const addPhone = async (req: Request, res: Response): Promise<void> => {
       processor: body.processor,
       ram: body.ram,
       screen: body.screen,
-      ...(getImageEncode(req) && { img: getImageEncode(req) }),
+      img: req.file ? req.file.originalname : null,
     });
 
     const newPhone: IPhone = await phone.save();
 
     res.status(201).json(newPhone);
   } catch (error) {
-    throw error;
+    res.status(500).json(error);
   }
 };
 
@@ -45,7 +53,7 @@ const getPhoneDetail = async (req: Request, res: Response): Promise<void> => {
 
     res.status(phone ? 200 : 404).json({ phone });
   } catch (error) {
-    throw error;
+    res.status(500).json(error);
   }
 };
 
@@ -53,11 +61,11 @@ const updatePhone = async (req: Request, res: Response): Promise<void> => {
   try {
     const {
       params: { id },
-      body
+      body,
     } = req;
-  
+
     const updatePhone: IPhone | null = await Phone.findByIdAndUpdate(
-      {_id: id},
+      { _id: id },
       body
     );
 
@@ -65,7 +73,7 @@ const updatePhone = async (req: Request, res: Response): Promise<void> => {
       phone: updatePhone,
     });
   } catch (error) {
-    throw error;
+    res.status(500).json(error);
   }
 };
 
@@ -78,7 +86,7 @@ const deletePhone = async (req: Request, res: Response): Promise<void> => {
       todo: deletedPhone,
     });
   } catch (error) {
-    throw error;
+    res.status(500).json(error);
   }
 };
 

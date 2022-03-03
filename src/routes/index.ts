@@ -8,7 +8,6 @@ import {
 } from "../controllers/phones";
 import { setImageOnStorage } from "../utils/utils";
 
-
 const phonesRoutes: Router = Router();
 
 phonesRoutes.get("/phones", getPhones);

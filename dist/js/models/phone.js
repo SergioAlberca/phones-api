@@ -15,8 +15,7 @@ const phoneSchema = new mongoose_1.Schema({
         required: true,
     },
     img: {
-        data: Buffer,
-        contentType: String
+        type: String || null,
     },
     color: {
         type: String,
@@ -37,6 +36,6 @@ const phoneSchema = new mongoose_1.Schema({
     screen: {
         type: String,
         required: true,
-    }
+    },
 }, { timestamps: true });
 exports.default = (0, mongoose_1.model)("Phone", phoneSchema);

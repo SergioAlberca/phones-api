@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 5666;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(routes_1.default);
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use("/uploads", express_1.default.static("uploads"));
 const uri = `mongodb+srv://S_Alberca:${process.env.MONGO_PASSWORD}@phonesdatabase.ndiwl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
 mongoose_1.default
     .connect(uri)
