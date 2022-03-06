@@ -14,10 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPhoneDetail = exports.deletePhone = exports.updatePhone = exports.addPhone = exports.getPhones = void 0;
 const phone_1 = __importDefault(require("../../models/phone"));
+const prepareResponses_1 = require("../../utils/prepareResponses");
 const getPhones = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const phones = yield phone_1.default.find();
-        res.status(200).json(phones);
+        const mappedPhones = (0, prepareResponses_1.prepareResponseAllPhone)(phones);
+        res.status(200).json(mappedPhones);
     }
     catch (error) {
         res.status(500).json(error);

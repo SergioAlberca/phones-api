@@ -37,5 +37,5 @@ const phoneSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
-}, { timestamps: true });
+});
 exports.default = (0, mongoose_1.model)("Phone", phoneSchema);

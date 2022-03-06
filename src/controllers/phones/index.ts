@@ -1,11 +1,14 @@
 import { Response, Request } from "express";
 import { IPhone } from "../../types/phone.type";
 import Phone from "../../models/phone";
+import { prepareResponseAllPhone } from "../../utils/prepareResponses";
 
 const getPhones = async (req: Request, res: Response): Promise<void> => {
   try {
     const phones: IPhone[] = await Phone.find();
-    res.status(200).json(phones);
+    const mappedPhones = prepareResponseAllPhone(phones);
+
+    res.status(200).json(mappedPhones);
   } catch (error) {
     res.status(500).json(error);
   }
