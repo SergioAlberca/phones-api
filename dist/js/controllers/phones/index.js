@@ -17,7 +17,7 @@ const phone_1 = __importDefault(require("../../models/phone"));
 const getPhones = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const phones = yield phone_1.default.find();
-        res.status(200).json({ phones });
+        res.status(200).json(phones);
     }
     catch (error) {
         res.status(500).json(error);

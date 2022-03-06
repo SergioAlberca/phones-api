@@ -5,7 +5,7 @@ import Phone from "../../models/phone";
 const getPhones = async (req: Request, res: Response): Promise<void> => {
   try {
     const phones: IPhone[] = await Phone.find();
-    res.status(200).json({ phones });
+    res.status(200).json(phones);
   } catch (error) {
     res.status(500).json(error);
   }
