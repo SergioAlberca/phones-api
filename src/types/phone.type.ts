@@ -13,6 +13,7 @@ export interface IPhone extends Document {
 }
 
 export interface IAllPhones {
+  id: string;
   img?: string | null;
   manuFacturer: string;
   name: string;
